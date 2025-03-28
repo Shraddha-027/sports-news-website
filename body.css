@@ -1,0 +1,315 @@
+body
+{
+	font-family: century-gothic;
+	background-size: cover;
+}
+.nav-wrapper a
+{
+	letter-spacing: .1em;
+	text-decoration: none;
+	font-weight: bold;
+	color:#eee;
+}
+.wrapper > .featured,
+.wrapper > .sub-featured > div,
+.wrapper > .main-content,
+.wrapper > .main-sidebar
+{
+   padding: 20px;
+}
+/* body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                      url("https://previews.123rf.com/images/krekdm/krekdm1607/krekdm160700279/60729001-seamless-sport-pattern-can-be-used-for-wallpaper-website-background-wrapping-paper-sport.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; /* Ensures text is readable */
+	body {
+		background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+						  url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed;
+		min-height: 100vh;
+	}	
+
+.nav-wrapper a:hover
+{
+	cursor: pointer;
+	color: #eee;
+}
+.list-item
+{
+	text-transform: uppercase;
+	padding: 10px;
+}
+.logo
+{
+	font-weight: bold;
+	font-size: 24px;
+	margin-top: 10px;
+}
+.nav-wrapper
+{
+	
+	max-width: 1200px;
+	margin: auto;
+	padding: 15px 20px;
+	margin-top: 30px;
+	display: grid;
+	grid-template-columns: 20% auto;
+
+}
+.burger-icon
+{
+	display: none;
+	margin: auto;
+}
+
+.main-wrapper
+{
+   max-width: 1200px;
+   margin: auto;
+}
+.wrapper
+{
+  max-width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 10px;
+  grid-template-areas: 
+  "featuredmain featuredmain subfeatured"
+  "maincontent maincontent mainsidebar"
+}
+.featured
+{
+   grid-area: featuredmain;
+   min-height: 500px;
+   background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.1)) border-box,url(https://source.unsplash.com/1600x900/?batting) no-repeat center center;
+   display: grid;
+   align-content: flex-end;
+   color: #fff;
+}
+.main-content, .featured, .sub-featured > div, .main-sidebar
+{
+	box-shadow: 0 0 4px rgba(0,0,0,5);
+}
+.featured h1
+{
+	font-size: 36px;
+	max-width: 650px;
+}
+.sub-featured h3
+{
+	margin-top: 0;
+}
+
+.sub-featured
+{
+   grid-area: subfeatured;
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-gap: 10px;
+}
+.main-content
+{
+   grid-area: maincontent;
+   color: whitesmoke;
+   line-height: 1.5em;
+}
+/* News Section - Continuous Headlines */
+#news {
+    background:transparent;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.main-sidebar
+{
+   grid-area: mainsidebar;
+   color: #ffffff;
+   line-height: 1.5em;
+}
+.footer
+{
+	display: grid;
+	margin: auto;
+	grid-template-columns: minmax(20px,300px) minmax(20px,300px) minmax(20px,300px) minmax(20px,300px);
+	justify-content: center;
+	grid-template-rows: 1fr 1fr;
+	background-size: cover;
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.1)) border-box,url(https://source.unsplash.com/1600x900/?skating) no-repeat center center;
+	color: #fff;
+}
+.footer > div
+{
+	padding: 25px;
+}
+.copyright
+{
+	max-width: 1200px;
+	margin: auto;
+	padding: 20px;
+	grid-column: 1/5;
+}
+.nav-wrapper ul li
+{
+    display: inline;
+    list-style-type: none;
+}
+.sub1
+{
+	background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.1)) border-box,url(https://source.unsplash.com/1600x900/?South-Africa-flag) no-repeat center center;
+    background-size: cover;
+    display: grid;
+    align-content: flex-end;
+    color: #fff;
+}
+.sub2
+{
+	background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.1)) border-box,url(https://source.unsplash.com/1600x900/?Austrailia-flag) no-repeat center center;
+    background-size: cover;
+    display: grid;
+    align-content: flex-end;
+    color: #fff;
+}
+.sub3
+{
+	background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.1)) border-box,url(https://source.unsplash.com/1600x900/?Bangladesh-flag) no-repeat center center;
+    background-size: cover;
+    display: grid;
+    align-content: flex-end;
+    color: #fff;
+}
+@media screen and (max-width: 950px)
+{
+	.wrapper
+	{
+		grid-template-areas: 
+		"featuredmain featuredmain featuredmain"
+		"subfeatured subfeatured subfeatured"
+		"maincontent maincontent mainsidebar"
+	}
+	.sub-featured
+	{
+		grid-template-columns: repeat(3,1fr);
+	}
+	.nav-items
+	{
+		grid-column: 1/5;
+		text-align: center;
+	}
+	.logo
+	{
+		grid-column: 1/5;
+		text-align: center;
+	}
+	.nav-wrapper
+	{
+		margin-top: 0px;
+	}
+	
+}
+@media screen and (max-width: 690px)
+{
+	.wrapper
+	{
+		grid-template-areas: 
+		"featuredmain featuredmain featuredmain"
+		"maincontent maincontent maincontent"
+		"subfeatured subfeatured subfeatured"
+		"mainsidebar mainsidebar mainsidebar"
+	}
+	.sub-featured
+	{
+		grid-template-columns: 1fr;
+  	}
+  	.footer > div
+  	{
+  		grid-column: 1/5;
+  	}
+   .logo
+	{
+		grid-column: 1/1;
+		margin-top: 10px;
+	}
+	.nav-items
+	{
+		grid-column: 1/5;
+		text-align: center;
+	}
+	.nav-wrapper ul 
+    {
+    	padding: 0px;
+    	margin:0px;
+    }
+    .nav-wrapper ul li
+    {
+	    display: block;
+    }
+    .burger-icon
+    {
+    	display: inline-block;
+    	grid-column: 4/5;
+    	justify-self:end;
+    	border: 2px solid #333;
+    	color: #333;
+    	padding: 10px;
+    	font-weight: bold;
+    	border-radius: 3px;
+    }
+    .burger-icon:hover
+    {
+         cursor: pointer;
+    }
+    .featured h1
+    {
+    	font-size: 30px;
+    }
+    .mobile-show
+    {
+    	display: block;
+    }
+    .mobile-hide
+    {
+    	display: none;
+    }
+  
+
+}
+/* Add to existing CSS */
+#newsdetails {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card-body {
+    padding: 15px;
+    color: white;
+}
+
+.btn-dark {
+    background: #333;
+    border: none;
+    margin-top: 10px;
+}
