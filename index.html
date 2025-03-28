@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports News</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Ixternal Styling -->
+    <style>
+        
+        body {
+            font-family:  'Californian FB';
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?t=st=1742669069~exp=1742672669~hmac=dbdeaad84eeaa643c49781941b2f39163e672731ad1c0a722bf41883cb7068e6&w=1380');
+            background-size: cover;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .nav-tabs {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link {
+            color: white !important;
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border-color: transparent !important;
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">🏏 Sports News</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#" data-category="sports">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-category="cricket">Cricket</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-category="football">Football</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-category="basketball">Basketball</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-category="kabaddi">Kabaddi</a></li>
+                </ul>
+                <div class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search News" id="searchInput">
+                    <button class="btn btn-outline-light" id="searchBtn">Search</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <div id="loading" class="text-center mb-4" style="display: none;">
+            <div class="spinner-border text-light"></div>
+        </div>
+        <div class="row g-4" id="newsContainer"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // api-key of newsapi
+        const API_KEY = 'd2e2322ee8e74ad2b57bbc1d5fda30ea';
+        let currentCategory = 'sports';
+
+        async function fetchNews(category = 'sports', query = '') {
+            document.getElementById('loading').style.display = 'block';
+            let url = '';
+            
+            if(query) {
+                url = `https://newsapi.org/v2/everything?q=${query}&language=en&sortBy=publishedAt&apiKey=${API_KEY}`;
+            } else {
+                if(category === 'sports') {
+                    url = `https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=${API_KEY}`;
+                } else {
+                    url = `https://newsapi.org/v2/everything?q=${category}&language=en&sortBy=publishedAt&apiKey=${API_KEY}`;
+                }
+            }
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                displayNews(data.articles);
+            } catch (error) {
+                console.error('Error fetching news:', error);
+                newsContainer.innerHTML = '<div class="col text-center">Failed to load news. Please try again later.</div>';
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        function displayNews(articles) {
+            const newsContainer = document.getElementById('newsContainer');
+            newsContainer.innerHTML = '';
+
+            if(!articles || articles.length === 0) {
+                newsContainer.innerHTML = `</div>    
+    <div class="sub-featured">
+      <div class="sub1">
+        <img src="https://ss-i.thgim.com/public/cricket/international/article30566977.ece/alternates/LANDSCAPE_1200/DEVILLIERSGETTY" alt="" width="750" height="650">
+        <h3>AB De Villiers seeks to play T20 World Cup  has expressed interest in returning to international cricket and playing for South Africa in the T20 World Cup, but he emphasizes that his comeback depends on being in top form and being better than other players in contentionDesire to Play:
+De Villiers has stated that he would "love to" make a comeback and play in the T20 World Cup, particularly with the new leadership in South African cricket, including former teammates Mark Boucher (coach) and Graeme Smith (director of cricket). 
+Focus on Form:
+He acknowledges that his return is not guaranteed and that he needs to be in peak condition to warrant a spot in the team. 
+IPL Performance:
+De Villiers has mentioned that he wants to perform well in the Indian Premier League (IPL) to prove to himself and others that he is still a key figure in world cricket. . </h3>
+      </div>
+      <div class="sub2">
+        <img src="https://static.toiimg.com/thumb/msid-73262118,imgsize-282910,width-400,resizemode-4/73262118.jpg" alt="" width="750" height="650">
+        <h3> it's accurate that Australia has had some very dominant ODI wins against India, including 10-wicket victories. These results highlight the competitive nature of the Australia-India cricket rivalry. Here are some key points to consider:
+
+Dominant Performances:
+Australia has displayed some very strong performances against India in ODI matches, with notable 10-wicket wins that showcase their batting prowess.   
+These wins often involve strong opening partnerships and effective bowling displays.
+Rivalry:
+The Australia-India cricket rivalry is one of the most intense in international cricket.   
+Both teams have a history of strong performances, and matches between them are often highly competitive.
+Factors:
+Factors such as home-field advantage, player form, and specific match conditions can significantly influence the outcome of these matches.
+To get the most up to date and detailed information on specific matches, I recomend checking resources such as:
+
+Cricbuzz
+ESPNcricinfo
+Cricket.com.au
+Sky sports.I</h3>
+      </div>
+      <div class="sub3">
+        <img src="https://static.abplive.com/wp-content/uploads/2020/01/14193444/FotoJet-7.jpg?impolicy=abp_cdn&imwidth=1200&height=675" alt="" width="750" height="650">
+        <h3> the situation involved some initial hesitation from Bangladesh due to security concerns, but ultimately, an agreement was reached for them to play Test matches in Pakistan. Here's a summary of the key points:
+
+Security Concerns:
+Initially, the Bangladesh Cricket Board (BCB) had reservations about playing a full Test series in Pakistan due to security concerns.
+The Bangladesh government also provided advice regarding the tour.
+Agreement Reached:
+After discussions, including facilitation by the International Cricket Council (ICC), an agreement was reached.
+Bangladesh agreed to play a series that included T20Is, ODIs, and Test matches in Pakistan.</h3>
+      </div>
+    </div>
+     <div class="main-sidebar">
+      <div class="email-digest-subscription">
+        <h2>Weekly Email Update</h2>
+        <p>Subscribe below and we all send you a weekly email summary of our latest and gratest gadgets and all of the spam that you'll be able to handle!</p>
+
+<form id="subscribe" action="#" accept-charset="UTF-8" method="post">
+          <input placeholder="Email Address" class="email" name="email" id="email" type="email">
+          <button name="button" type="submit" class="subscribe">Subscribe Me</button>
+        </form>
+      </div>
+    </div>
+  </div>`;
+                return;
+            }
+
+            articles.forEach(article => {
+                const card = document.createElement('div');
+                card.className = 'col-12 col-md-6 col-lg-4';
+                card.innerHTML = `
+                    <div class="news-card p-3 mb-3">
+                        <img src="${article.urlToImage || 'https://via.placeholder.com/800x500.png?text=No+Image'}" 
+                             class="card-img-top mb-3" alt="${article.title}">
+                        <h5>${article.title}</h5>
+                        <p class="text-muted">${article.description || ''}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small>${new Date(article.publishedAt).toLocaleDateString()}</small>
+                            <a href="${article.url}" target="_blank" class="btn btn-sm btn-light">Read More →</a>
+                        </div>
+                    </div>
+                `;
+                newsContainer.appendChild(card);
+            });
+        }
+
+        // Event Listeners
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                document.querySelector('.nav-link.active').classList.remove('active');
+                e.target.classList.add('active');
+                currentCategory = e.target.dataset.category;
+                fetchNews(currentCategory);
+            });
+        });
+
+        document.getElementById('searchBtn').addEventListener('click', () => {
+            const query = document.getElementById('searchInput').value;
+            if(query) fetchNews('', query);
+        });
+
+        // Initial Load
+        fetchNews(currentCategory);
+    </script>
+</body>
+</html>
